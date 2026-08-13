@@ -1,8 +1,21 @@
-# Superstore — Shipping & Regional Analysis
+# Superstore — Regional Profitability & Shipping Analytics
 
-Business intelligence analysis of the **Sample Superstore** retail dataset, combining Python analysis, Power BI modeling, and a lightweight interactive HTML dashboard. The project focuses on regional profitability, shipping-mode performance, delivery time, and late shipments.
+A business intelligence case study using **Python, Power BI, DAX, and an interactive HTML dashboard** to identify regional profitability gaps and understand whether shipping or commercial factors explain performance differences.
 
-> **Context:** Group project for Data Visualization (ITC6004A1), Deree – The American College of Greece, Winter Term 2026.
+![Dashboard preview](docs/dashboard-preview.svg)
+
+## Executive summary
+
+The analysis examines sales, profit margin, shipping performance, and product-level drivers across four US regions.
+
+**Key finding:** Central is the clear profitability outlier, with an approximately **7.92% margin versus 14.94% in West**. Average shipping time is broadly similar across regions, so the evidence points more strongly toward **pricing and discounting** than logistics as the main explanation for the gap.
+
+### Business implications
+
+- Review discounting and pricing in Central, especially within Furniture.
+- Prioritize Tables and Bookcases where margin pressure is strongest.
+- Keep monitoring Standard Class performance, but avoid treating shipping speed as the primary root cause without stronger evidence.
+- Validate commercial interventions with controlled tests before scaling them.
 
 ## Business questions
 
@@ -10,70 +23,61 @@ Business intelligence analysis of the **Sample Superstore** retail dataset, comb
 - Does shipping-mode mix differ materially by region?
 - Are delivery times consistent across regions and shipping modes?
 - Where are late Standard Class shipments concentrated?
-- What operational vs. commercial explanations are supported by the data?
+- What operational and commercial explanations are supported by the data?
 
-## Key findings
+## Key metrics
 
-- Revenue reached approximately **$2.30M** with **$286.40K** total profit and a **12.47%** overall margin in the supplied Power BI analysis.
-- **Central** is the main regional profitability issue: approximately **$501K sales at 7.92% margin**, versus **14.94% in West**.
-- **Standard Class** is the dominant shipping mode across all four regions.
-- Average shipping time is highly similar across regions; Standard Class is roughly **five days** in each region.
-- The supplied analysis therefore points more strongly toward **pricing/discount policy** than logistics as the explanation for Central's margin gap.
-- The report also identifies **Furniture**, especially Tables and Bookcases, and deep discounting as major sources of margin pressure.
+| Metric | Result |
+|---|---:|
+| Sales | **$2.30M** |
+| Profit | **$286.40K** |
+| Overall margin | **12.47%** |
+| Central margin | **7.92%** |
+| West margin | **14.94%** |
+| Standard Class | Dominant shipping mode |
 
-These findings are documented in the supplied project report and Power BI dashboard. The Python notebook reproduces the core shipping/regional calculations from the CSV.
+## Analysis approach
+
+1. Clean and type the transactional data.
+2. Build delivery-time and profitability measures.
+3. Compare sales, profit, margin, and shipping performance by region and shipping mode.
+4. Investigate product and discount patterns behind regional margin differences.
+5. Translate the evidence into business recommendations while separating correlation from causation.
 
 ## Deliverables
 
 | Artifact | Purpose |
 |---|---|
-| `dashboard/Superstore_Sales.pbix` | Power BI dashboard and data model |
-| `notebooks/Superstore_Shipping_Regional_Analysis.ipynb` | Reproducible Python analysis |
-| `docs/shipping_region_analysis.html` | Lightweight interactive web dashboard |
-| `docs/Superstore_Sales_Report.docx` | Full project report and recommendations |
-| `data/Sample - Superstore.csv` | Source dataset used by the analysis |
+| [`Superstore_Sales.pbix`](dashboard/Superstore_Sales.pbix) | Power BI dashboard and data model |
+| [`Superstore_Shipping_Regional_Analysis.ipynb`](notebooks/Superstore_Shipping_Regional_Analysis.ipynb) | Reproducible Python analysis |
+| [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Interactive HTML dashboard |
+| [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Detailed analysis and recommendations |
+| [`dashboard-preview.svg`](docs/dashboard-preview.svg) | Recruiter-facing visual preview |
 
-## Power BI dashboard
+## Dashboard
 
-The Power BI deliverable contains four narrative pages: **Executive Summary, Product Analysis, Customer Analysis, and Regional Performance**. The report describes a model with a dedicated DateTable, a `_Measures` table, calculated columns for discount tier/profit flag/days to ship, and DAX measures for sales, profit, margin, customers, orders, AOV, and shipping performance.
+The Power BI report is structured around four analytical views:
 
-The Regional Performance page is the key operational/business-analysis component: it combines regional KPIs, sales by ship mode, sales distribution, average ship days, late shipments, and profit-margin comparisons.
+- **Executive Summary** — headline KPIs and regional performance
+- **Product Analysis** — product/category profitability and margin pressure
+- **Customer Analysis** — customer and order-level patterns
+- **Regional Performance** — shipping, margin, sales, and late-shipment analysis
 
-## Methodology
-
-1. Load and type the Superstore transactional data.
-2. Create `Days to Ship` from `Ship Date - Order Date`.
-3. Aggregate sales, profit, orders, and margins by region.
-4. Compare shipping-mode sales and average delivery time across regions.
-5. Define late Standard Class shipments as **more than five calendar days**.
-6. Interpret the evidence together rather than treating correlation or operational proximity as proof of causality.
+The model uses a dedicated DateTable, a measures table, calculated business flags, and DAX measures for sales, profit, margin, customers, orders, AOV, and shipping performance.
 
 ## Tools
 
-- Python — pandas, NumPy, matplotlib
-- Power BI Desktop — Power Query, DAX, interactive dashboarding
-- HTML / JavaScript — lightweight presentation dashboard
+**Power BI · DAX · Power Query · Python · pandas · NumPy · matplotlib · HTML / JavaScript**
 
-## Repository structure
+## Context
 
-```text
-superstore-shipping-region-analysis/
-├── README.md
-├── data/
-│   └── Sample - Superstore.csv
-├── notebooks/
-│   └── Superstore_Shipping_Regional_Analysis.ipynb
-├── docs/
-│   ├── Superstore_Sales_Report.docx
-│   └── shipping_region_analysis.html
-└── dashboard/
-    └── Superstore_Sales.pbix
-```
-
-## Important note
-
-This is a **portfolio presentation of a group academic project**. The report and dashboard should be read as the team deliverable; the repository is organized to make the analytical workflow and final artifacts easy for a recruiter or reviewer to inspect.
+Portfolio case study based on a group Data Visualization project at **The American College of Greece**. The team context is retained for transparency; the repository is presented as a professional analytics case study rather than as a coursework archive.
 
 ## Dataset
 
-The supplied report identifies the source as the **Sample Superstore** dataset published on Kaggle by Tableau Software.
+Sample Superstore transactional data, sourced from the dataset used in the original project.
+
+## Author
+
+**Dimitris Bechrakis**  
+Business & Data Analyst | M.Sc. Data Science
