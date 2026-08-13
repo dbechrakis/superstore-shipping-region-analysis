@@ -2,8 +2,6 @@
 
 A business intelligence case study using **Python, Power BI, DAX, and an interactive HTML dashboard** to identify regional profitability gaps and understand whether shipping or commercial factors explain performance differences.
 
-![Dashboard preview](docs/dashboard-preview.svg)
-
 ## Executive summary
 
 The analysis examines sales, profit margin, shipping performance, and product-level drivers across four US regions.
@@ -52,7 +50,6 @@ The analysis examines sales, profit margin, shipping performance, and product-le
 | [`Superstore_Shipping_Regional_Analysis.ipynb`](notebooks/Superstore_Shipping_Regional_Analysis.ipynb) | Reproducible Python analysis |
 | [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Interactive HTML dashboard |
 | [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Detailed analysis and recommendations |
-| [`dashboard-preview.svg`](docs/dashboard-preview.svg) | Recruiter-facing visual preview |
 
 ## Dashboard
 
