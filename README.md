@@ -4,9 +4,9 @@ A business intelligence case study using **Python, Power BI, DAX, and an interac
 
 ## Executive summary
 
-The analysis examines sales, profit margin, shipping performance, and product-level drivers across four US regions.
+The analysis examines sales, profit margin, dispatch performance, and product-level drivers across four US regions.
 
-**Key finding:** Central is the clear profitability outlier, with an approximately **7.92% margin versus 14.94% in West**. Average shipping time is broadly similar across regions, so the evidence points more strongly toward **pricing and discounting** than logistics as the main explanation for the gap.
+**Key finding:** Central is the clear profitability outlier, with an approximately **7.92% margin versus 14.94% in West**. Average order-to-ship time is broadly similar across regions. **Pricing and discounting are commercial hypotheses worth investigating**; these data do not measure delivery time or isolate logistics costs, so they cannot rule out logistics as a contributor.
 
 ### Business implications
 
@@ -19,8 +19,8 @@ The analysis examines sales, profit margin, shipping performance, and product-le
 
 - Which regions generate revenue efficiently, and where is margin leaking?
 - Does shipping-mode mix differ materially by region?
-- Are delivery times consistent across regions and shipping modes?
-- Where are late Standard Class shipments concentrated?
+- Are order-to-ship times consistent across regions and shipping modes?
+- Where are Standard Class orders dispatched after five days concentrated?
 - What operational and commercial explanations are supported by the data?
 
 ## Key metrics
@@ -38,7 +38,7 @@ The analysis examines sales, profit margin, shipping performance, and product-le
 
 1. Clean and type the transactional data.
 2. Build delivery-time and profitability measures.
-3. Compare sales, profit, margin, and shipping performance by region and shipping mode.
+3. Compare sales, profit, margin, and dispatch performance by region and shipping mode.
 4. Investigate product and discount patterns behind regional margin differences.
 5. Translate the evidence into business recommendations while separating correlation from causation.
 
@@ -51,6 +51,18 @@ The analysis examines sales, profit margin, shipping performance, and product-le
 | [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Interactive HTML dashboard |
 | [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Detailed analysis and recommendations |
 
+## Verified Python results
+
+![Regional profit margin](outputs/regional_margin.png)
+
+Recomputed from the committed source: **9,994 order lines, 5,009 distinct orders**, $2,297,200.86 sales and $286,397.02 profit. Standard Class orders dispatched after five days: Central **30.91%**, East **30.07%**, South **29.09%**, West **30.33%**. The denominator is distinct Standard Class orders in each region; five days is an analytical threshold, not a contractual SLA.
+
+[Regional CSV](outputs/regional_metrics.csv) · [Dispatch CSV](outputs/standard_dispatch_metrics.csv) · [Source hash and totals](outputs/validation.json)
+
+## My contribution and team credit
+
+I contributed to the original group project with Alexandros Douvlidis and Fotios Fotakis and maintain this portfolio repository. The report records team membership but does not allocate individual tasks; this repository does not claim that I individually built every dashboard page or analysis. The revised Python companion provides an executable reference for the regional and dispatch metrics.
+
 ## Dashboard
 
 The Power BI report is structured around four analytical views:
@@ -58,9 +70,9 @@ The Power BI report is structured around four analytical views:
 - **Executive Summary** — headline KPIs and regional performance
 - **Product Analysis** — product/category profitability and margin pressure
 - **Customer Analysis** — customer and order-level patterns
-- **Regional Performance** — shipping, margin, sales, and late-shipment analysis
+- **Regional Performance** — shipping, margin, sales, and dispatch-time analysis
 
-The model uses a dedicated DateTable, a measures table, calculated business flags, and DAX measures for sales, profit, margin, customers, orders, AOV, and shipping performance.
+The model uses a dedicated DateTable, a measures table, calculated business flags, and DAX measures for sales, profit, margin, customers, orders, AOV, and dispatch performance.
 
 ## Tools
 
@@ -69,6 +81,12 @@ The model uses a dedicated DateTable, a measures table, calculated business flag
 ## Context
 
 Portfolio case study based on a group Data Visualization project at **The American College of Greece**. The team context is retained for transparency; the repository is presented as a professional analytics case study rather than as a coursework archive.
+
+## Reproduce the current metrics
+
+Use Python 3.12, install `requirements.txt`, and run the Python notebook from its `notebooks/` directory. The source CSV is included; derived CSVs and charts are written to `outputs/`.
+
+The office documents, PBIX and HTML dashboard are **archived project deliverables**. Their embedded wording/metrics have not been refreshed in this review; the executed notebook and exported CSVs are the current reference.
 
 ## Dataset
 
