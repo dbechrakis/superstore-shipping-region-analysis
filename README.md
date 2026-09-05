@@ -6,7 +6,9 @@ A business intelligence case study using **Python, Power BI, DAX, and an interac
 
 ## Interactive portfolio demo
 
-![Superstore Profitability Explorer](docs/portfolio-overview.jpg)
+**[Open the live Profitability Explorer →](https://dbechrakis-superstore.bechrakisd.chatgpt.site)**
+
+[![Superstore Profitability Explorer](docs/portfolio-overview.jpg)](https://dbechrakis-superstore.bechrakisd.chatgpt.site)
 
 Explore year, region and category filters, margin comparisons and a downloadable regional table. The demo uses aggregates from the committed sample CSV; it contains no customer identifiers.
 
