@@ -1,6 +1,16 @@
 # Superstore — Regional Profitability & Shipping Analytics
 
+[![Evidence checks](https://github.com/dbechrakis/superstore-shipping-region-analysis/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/superstore-shipping-region-analysis/actions/workflows/evidence.yml)
+
 A business intelligence case study using **Python, Power BI, DAX, and an interactive HTML dashboard** to identify regional profitability gaps and understand whether shipping or commercial factors explain performance differences.
+
+## Interactive portfolio demo
+
+![Superstore Profitability Explorer](docs/portfolio-overview.jpg)
+
+Explore year, region and category filters, margin comparisons and a downloadable regional table. The demo uses aggregates from the committed sample CSV; it contains no customer identifiers.
+
+Run locally with `python -m http.server 8000 --directory demo`, then open `http://localhost:8000`. Source: [`demo/`](demo/).
 
 ## Executive summary
 
@@ -37,7 +47,7 @@ The analysis examines sales, profit margin, dispatch performance, and product-le
 ## Analysis approach
 
 1. Clean and type the transactional data.
-2. Build delivery-time and profitability measures.
+2. Build order-to-ship and profitability measures.
 3. Compare sales, profit, margin, and dispatch performance by region and shipping mode.
 4. Investigate product and discount patterns behind regional margin differences.
 5. Translate the evidence into business recommendations while separating correlation from causation.
@@ -61,7 +71,7 @@ Recomputed from the committed source: **9,994 order lines, 5,009 distinct orders
 
 ## My contribution and team credit
 
-I contributed to the original group project with Alexandros Douvlidis and Fotios Fotakis and maintain this portfolio repository. The report records team membership but does not allocate individual tasks; this repository does not claim that I individually built every dashboard page or analysis. The revised Python companion provides an executable reference for the regional and dispatch metrics.
+I contributed to the original group project with Alexandros Douvlidis and Fotios Fotakis and maintain this portfolio repository. The report records team membership but does not allocate individual tasks; this repository does not claim that I individually built every dashboard page or analysis. My current portfolio edition adds the verified Python companion, an interactive profitability explorer and automated evidence checks. These additions make the regional and dispatch metrics inspectable while preserving the original team credit.
 
 ## Dashboard
 
@@ -96,3 +106,7 @@ Sample Superstore transactional data, sourced from the dataset used in the origi
 
 **Dimitris Bechrakis**  
 Business & Data Analyst | M.Sc. Data Science
+
+## Licensing
+
+See [licensing scope](LICENSING.md) for the MIT-licensed verification code and the separately governed project materials.
