@@ -1,0 +1,9 @@
+ship_mode,factor,contribution_pp
+First Class,shipping_mode_mix,-0.7324816562357028
+Same Day,shipping_mode_mix,-0.2535850208056918
+Second Class,shipping_mode_mix,0.07664844631306555
+Standard Class,shipping_mode_mix,0.8011366950168144
+First Class,within_mode_margin,-1.648435083900597
+Same Day,within_mode_margin,-0.5631153812773834
+Second Class,within_mode_margin,-1.4116977781737243
+Standard Class,within_mode_margin,-3.2916730504864455

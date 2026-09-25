@@ -1,0 +1,52 @@
+category,subcategory,factor,contribution_pp
+Furniture,Bookcases,category_mix,0.01998574153574477
+Furniture,Chairs,category_mix,-0.058619422364755834
+Furniture,Furnishings,category_mix,-0.0021360252378471185
+Furniture,Tables,category_mix,0.020729801933309023
+Office Supplies,Appliances,category_mix,0.03190046257857262
+Office Supplies,Art,category_mix,0.025603644434462766
+Office Supplies,Binders,category_mix,0.10877094805279582
+Office Supplies,Envelopes,category_mix,0.028114652743891876
+Office Supplies,Fasteners,category_mix,0.003832028319587653
+Office Supplies,Labels,category_mix,0.024199864793169778
+Office Supplies,Paper,category_mix,0.13866619498382726
+Office Supplies,Storage,category_mix,0.07163829800377253
+Office Supplies,Supplies,category_mix,-0.00289705323822817
+Technology,Accessories,category_mix,-0.03946716512923524
+Technology,Copiers,category_mix,-0.06190262799540025
+Technology,Machines,category_mix,0.004172427994792127
+Technology,Phones,category_mix,-0.03963063477265294
+Furniture,Bookcases,subcategory_mix,-0.010707120500276725
+Furniture,Chairs,subcategory_mix,0.23089989471776506
+Furniture,Furnishings,subcategory_mix,-0.0014954532790853459
+Furniture,Tables,subcategory_mix,0.11764826972711478
+Office Supplies,Appliances,subcategory_mix,0.010613454686995942
+Office Supplies,Art,subcategory_mix,-0.05324043812442571
+Office Supplies,Binders,subcategory_mix,0.36888344143519103
+Office Supplies,Envelopes,subcategory_mix,0.12287778649866207
+Office Supplies,Fasteners,subcategory_mix,0.004588559791039962
+Office Supplies,Labels,subcategory_mix,-0.11815558411779
+Office Supplies,Paper,subcategory_mix,-0.21744969617512902
+Office Supplies,Storage,subcategory_mix,-0.11620619938678756
+Office Supplies,Supplies,subcategory_mix,0.01495836840778593
+Technology,Accessories,subcategory_mix,-0.35949971888576465
+Technology,Copiers,subcategory_mix,0.2942969111708161
+Technology,Machines,subcategory_mix,0.01343663727468789
+Technology,Phones,subcategory_mix,0.14980716684798046
+Furniture,Bookcases,within_product_margin,-0.1809093190423547
+Furniture,Chairs,within_product_margin,0.5878240497119288
+Furniture,Furnishings,within_product_margin,-1.828982549760512
+Furniture,Tables,within_product_margin,-1.0529155911770218
+Office Supplies,Appliances,within_product_margin,-1.7076984082424502
+Office Supplies,Art,within_product_margin,-0.061177666280921125
+Office Supplies,Binders,within_product_margin,-2.9047127857738007
+Office Supplies,Envelopes,within_product_margin,-0.05947759719616951
+Office Supplies,Fasteners,within_product_margin,0.0008526860085401566
+Office Supplies,Labels,within_product_margin,-0.009430848488589844
+Office Supplies,Paper,within_product_margin,-0.20084948630553068
+Office Supplies,Storage,within_product_margin,-0.7541450285472262
+Office Supplies,Supplies,within_product_margin,-0.23040822613278794
+Technology,Accessories,within_product_margin,-0.42659736964998446
+Technology,Copiers,within_product_margin,0.21750865019799415
+Technology,Machines,within_product_margin,-0.22877190073622225
+Technology,Phones,within_product_margin,1.0924711451408862
