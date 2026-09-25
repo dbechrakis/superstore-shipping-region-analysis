@@ -17,3 +17,5 @@ jobs:
           python-version: '3.12'
       - name: Validate committed evidence
         run: python ci/verify_evidence.py
+      - name: Test accounting invariants
+        run: python -m unittest discover -s tests -v

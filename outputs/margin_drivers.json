@@ -1,0 +1,23 @@
+{
+  "focus": "Central",
+  "reference": "West",
+  "margins_pct": {
+    "West": 14.944831420727214,
+    "Central": 7.921628591177552
+  },
+  "gap_pp": -7.023202829549661,
+  "product_effects_pp": {
+    "category_mix": 0.2729611366358067,
+    "subcategory_mix": 0.4512562800887802,
+    "within_product_margin": -7.747420246274222
+  },
+  "shipping_effects_pp": {
+    "shipping_mode_mix": -0.10828153571151466,
+    "within_mode_margin": -6.91492129383815
+  },
+  "reconciliation_residual_pp": -2.5757174171303632e-14,
+  "shipping_reconciliation_residual_pp": 3.552713678800501e-15,
+  "source_sha256": "58fb59c63089e564d835e4aabe19d371757de1137a5bf1888243ae386c4b7a97",
+  "method": "Sales-weighted Shapley accounting decomposition; percentage points, reference to focus",
+  "interpretation": "Product and shipping are alternative, non-additive views; discount is descriptive, not causal"
+}
