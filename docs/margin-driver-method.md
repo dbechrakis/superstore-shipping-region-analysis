@@ -29,7 +29,15 @@ The recorded line-level discount is not an independently additive fourth compone
 
 Shipping mode is a **separate alternative partition of the same 7.02 pp gap**, not an extra component to add to the product result. In a two-factor Shapley decomposition over shipping-mode sales shares and within-mode margins, shipping-mode mix is −0.11 pp and within-mode recorded margin is −6.91 pp. The latter contains commercial/product effects too; it is **not** a shipping-cost estimate. The source has dispatch dates but neither delivery dates nor an isolated logistics-cost breakdown. See [`shipping_mode_contributions.csv`](../outputs/shipping_mode_contributions.csv).
 
+## Design decisions
+
+- **Profit divided by realized sales:** a region with more revenue has more weight in its aggregate margin. Averaging order-line margins would give a tiny line the same weight as a large one.
+- **Three-factor Shapley allocation:** changing category share, within-category product share and within-product margin in one arbitrary order assigns interaction effects to whichever factor moves first. Averaging all six orders yields an exact, order-independent accounting split.
+- **Keep shipping separate:** product and shipping partitions each explain the same regional gap. Adding them would double-count it, and within-mode margin is not a measure of shipping cost.
+- **Diagnose discounts without a claimed uplift:** the recorded discount is associated with poor Central margins, but changing discounts could change demand and order mix. The descriptive allocation cannot predict that response.
+
 ## Decision use and limits
+
 
 Prioritize a review of pricing, discounts, product economics and recorded cost for Binders, Furnishings, Appliances and Tables. Check transaction-level composition and cost accounting before proposing a change. Then test a specific intervention prospectively: the historical gap and Shapley allocation are descriptive accounting identities, not forecasts of profit uplift or causal attributions. No comparison here controls for customers, geography within regions, seasonality, or all cost components.
 
