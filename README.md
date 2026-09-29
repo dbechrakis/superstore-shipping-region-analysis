@@ -18,7 +18,14 @@ Run locally with `python -m http.server 8000 --directory demo`, then open `http:
 
 The analysis examines sales, profit margin, dispatch performance, and product-level drivers across four US regions.
 
-**Key finding:** Central is the clear profitability outlier, with a **7.92% margin versus 14.94% in West**. An exact, sales-weighted product decomposition shows that category and within-category product mix slightly *offset* Central's 7.02 percentage-point deficit; the gap is concentrated in lower margins within the same subcategories. Average order-to-ship time is broadly similar across regions. Pricing and discounting are commercial hypotheses worth investigating, not established causal drivers; these data do not measure delivery time or isolate logistics costs.
+| Decision in 60 seconds | Answer |
+|---|---|
+| **Question** | Where should a regional profitability investigation start? |
+| **Evidence** | Central's margin is **7.92%** versus West's **14.94%**. The exact product decomposition assigns **−7.747 percentage points** to lower margins within the same subcategories; mix partly offsets the gap. |
+| **Next step** | Audit recorded product economics and discount practices in Central, starting with Binders, Furnishings, Appliances and Tables; test a proposed intervention before scaling it. |
+| **Boundary** | Discounting is associated with the gap, but these observational data do not identify its causal effect or isolate logistics costs. |
+
+An exact, sales-weighted product decomposition shows that category and within-category product mix slightly *offset* Central's deficit; the gap is concentrated in lower margins within the same subcategories. Average order-to-ship time is broadly similar across regions. These data do not measure delivery time or isolate logistics costs.
 
 ### What accounts for the Central–West margin gap?
 
