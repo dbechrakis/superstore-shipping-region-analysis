@@ -58,3 +58,16 @@ for record in discount:
 assert not reference
 
 print('Committed evidence and syntax checks passed; see VALIDATION.md for rerun scope.')
+
+# Re-run every SQL query and compare exports, including NULL vs zero censoring.
+import tempfile
+from sql.run_analysis import analyze as analyze_sql
+with tempfile.TemporaryDirectory() as directory:
+    rebuilt = Path(directory)
+    sql_manifest = analyze_sql(ROOT/'data/Sample - Superstore.csv', rebuilt)
+    committed_manifest = json.loads((ROOT/'outputs/sql/manifest.json').read_text())
+    for key in ('source_sha256', 'schema_sha256', 'runner_sha256', 'query_sha256', 'scope', 'repeat_purchase_90d', 'definitions'):
+        assert sql_manifest[key] == committed_manifest[key], key
+    for result in rebuilt.glob('*.csv'):
+        assert result.read_text() == (ROOT/'outputs/sql'/result.name).read_text(), result.name
+print('SQL customer/cohort evidence regenerated and reconciled.')
