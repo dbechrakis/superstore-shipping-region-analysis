@@ -6,15 +6,17 @@ A business intelligence case study using **Python, Power BI, DAX, and an interac
 
 ## Interactive portfolio demo
 
-**[Open the live Profitability Explorer →](https://dbechrakis-superstore.bechrakisd.chatgpt.site)**
+**[Open the live Profitability Explorer →](https://dbechrakis.github.io/superstore-shipping-region-analysis/)**
 
-[![Superstore Profitability Explorer](docs/portfolio-overview.jpg)](https://dbechrakis-superstore.bechrakisd.chatgpt.site)
+[![Superstore Profitability Explorer](docs/portfolio-overview.jpg)](https://dbechrakis.github.io/superstore-shipping-region-analysis/)
 
 Explore year, region and category filters, margin comparisons and a downloadable regional table. The demo uses aggregates from the committed sample CSV; it contains no customer identifiers.
 
 Run locally with `python -m http.server 8000 --directory demo`, then open `http://localhost:8000`. Source: [`demo/`](demo/).
 
 ## Executive summary
+
+**SQL customer lifecycle case:** [inspect the six executable queries](sql/README.md) for order-grain reconciliation, window functions, monthly cohorts, equal-window 90-day repeat purchase and revenue concentration. **181 of 790 eligible customers (22.91%)** made a second purchase within 90 days; three customers lacked a full observation window. [Source-backed SQL outputs](outputs/sql/) distinguish unobservable periods from zero activity. [Current vs historical evidence](docs/evidence-map.md).
 
 The analysis examines sales, profit margin, dispatch performance, and product-level drivers across four US regions.
 
@@ -76,10 +78,11 @@ The largest negative within-product contributions are **Binders (−2.91 pp), Fu
 
 | Artifact | Purpose |
 |---|---|
-| [`Superstore_Sales.pbix`](dashboard/Superstore_Sales.pbix) | Power BI dashboard and data model |
+| [`Superstore_Sales.pbix`](dashboard/Superstore_Sales.pbix) | Historical group Power BI dashboard and data model |
 | [`Superstore_Shipping_Regional_Analysis.ipynb`](notebooks/Superstore_Shipping_Regional_Analysis.ipynb) | Reproducible Python analysis |
-| [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Interactive HTML dashboard |
-| [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Detailed analysis and recommendations |
+| [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Historical group HTML dashboard |
+| [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Historical group report |
+| [`sql/`](sql/README.md) | Current SQL customer lifecycle and cohort case |
 | [`margin-driver-method.md`](docs/margin-driver-method.md) | Reconciled Central–West decomposition, interpretation and limitations |
 
 ## Verified Python results
@@ -134,4 +137,4 @@ Business & Data Analyst | M.Sc. Data Science
 
 ## Licensing
 
-See [licensing scope](LICENSING.md) for the MIT-licensed verification code and the separately governed project materials.
+See the root [MIT license](LICENSE) and [licensing scope](LICENSING.md) for covered supplemental code and separately governed team materials/data.

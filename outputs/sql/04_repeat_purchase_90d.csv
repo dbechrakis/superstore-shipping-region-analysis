@@ -1,0 +1,9 @@
+breakdown,segment_value,observed_customers,eligible_customers,repeat_customers,censored_customers,repeat_rate_90d
+all,All customers,793,790,181,3,0.229113924051
+first_order_region,Central,196,196,49,0,0.25
+first_order_region,East,204,203,51,1,0.251231527094
+first_order_region,South,141,139,27,2,0.194244604317
+first_order_region,West,252,252,54,0,0.214285714286
+first_order_segment,Consumer,409,407,101,2,0.248157248157
+first_order_segment,Corporate,236,236,49,0,0.207627118644
+first_order_segment,Home Office,148,147,31,1,0.210884353741

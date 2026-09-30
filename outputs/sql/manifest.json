@@ -1,0 +1,40 @@
+{
+  "source_sha256": "58fb59c63089e564d835e4aabe19d371757de1137a5bf1888243ae386c4b7a97",
+  "sqlite_version": "3.53.1",
+  "schema_sha256": "580ad1acc05de4faad7c7ef400cdcc3fb0098b90f0e4150a37d43ae19b4a658b",
+  "runner_sha256": "56ce4c249f7d771a1d8c3f90b1a54a6da20c6db3a13f3552df175d9ae1844b49",
+  "scope": {
+    "orders": 5009,
+    "customers": 793,
+    "order_lines": 9994,
+    "sales_micros": 2297200860300,
+    "profit_micros": 286397021700,
+    "observation_start": "2014-01-03",
+    "last_order_date": "2017-12-30",
+    "as_of": "2017-12-30"
+  },
+  "repeat_purchase_90d": {
+    "breakdown": "all",
+    "segment_value": "All customers",
+    "observed_customers": 793,
+    "eligible_customers": 790,
+    "repeat_customers": 181,
+    "censored_customers": 3,
+    "repeat_rate_90d": 0.2291139240506329
+  },
+  "query_sha256": {
+    "01_reconciliation.sql": "5839bc302a64b320b32b8ed05bd7ad47b8b0ea8c7eb1ba3188495b2cdd9a72cb",
+    "02_customer_lifecycle.sql": "7551085d1a41bd9e5d2d36705613a44ff5d359d135b756d1d1f66020f3991cfb",
+    "03_monthly_cohort_retention.sql": "728883d054ec8aa480804ebfec2d232d82b234881b5076bf5a4ed02d4afb3acc",
+    "04_repeat_purchase_90d.sql": "5eebcbedc208cbf572f2bf41b6390dc46c54e68d631ad42609d2c4d075a03f83",
+    "05_monthly_customer_revenue.sql": "8cfa4b50a964eca82c6e6ed855e992b1855a5fd80eec5d7f90945523a4e86e99",
+    "06_customer_revenue_concentration.sql": "6edff0ed6164fc0adbcdf81c80609040adf65a6faa2f9355a32502ab1d29f597"
+  },
+  "definitions": {
+    "cohort": "first observed order month; not verified customer acquisition",
+    "monthly_retention": "distinct cohort customers active in a fully observable calendar month / cohort size",
+    "repeat_90d": "a second distinct order within 90 days; only full 90-day observation windows",
+    "same_day_orders": "distinct order IDs count as purchases; date ties ordered by order ID",
+    "coverage": "a sample snapshot; absence of a purchase is not proof of inactivity in the full business"
+  }
+}
