@@ -79,6 +79,7 @@ The largest negative within-product contributions are **Binders (−2.91 pp), Fu
 | Artifact | Purpose |
 |---|---|
 | [`Superstore_Sales.pbix`](dashboard/Superstore_Sales.pbix) | Historical group Power BI dashboard and data model |
+| [`power-bi-report.md`](docs/power-bi-report.md) | Page-by-page map of the PBIX visuals and measures, readable without Power BI |
 | [`Superstore_Shipping_Regional_Analysis.ipynb`](notebooks/Superstore_Shipping_Regional_Analysis.ipynb) | Reproducible Python analysis |
 | [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Historical group HTML dashboard |
 | [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Historical group report |
@@ -101,7 +102,7 @@ I contributed to the original group project with Alexandros Douvlidis and Fotios
 
 ## Dashboard
 
-The Power BI report is structured around four analytical views:
+The Power BI report is structured around four analytical views ([full page and visual map](docs/power-bi-report.md)):
 
 - **Executive Summary** — headline KPIs and regional performance
 - **Product Analysis** — product/category profitability and margin pressure
