@@ -81,7 +81,7 @@ The largest negative within-product contributions are **Binders (−2.91 pp), Fu
 | [`Superstore_Sales.pbix`](dashboard/Superstore_Sales.pbix) | Historical group Power BI dashboard and data model |
 | [`power-bi-report.md`](docs/power-bi-report.md) | Page-by-page map of the PBIX visuals and measures, readable without Power BI |
 | [`Superstore_Shipping_Regional_Analysis.ipynb`](notebooks/Superstore_Shipping_Regional_Analysis.ipynb) | Reproducible Python analysis |
-| [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Historical group HTML dashboard |
+| [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Group HTML dashboard, figures recalculated from source and test-checked |
 | [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Historical group report |
 | [`sql/`](sql/README.md) | Current SQL customer lifecycle and cohort case |
 | [`margin-driver-method.md`](docs/margin-driver-method.md) | Reconciled Central–West decomposition, interpretation and limitations |
@@ -101,6 +101,10 @@ The new driver evidence is independently regenerated from that same source: [sum
 I contributed to the original group project with Alexandros Douvlidis and Fotios Fotakis and maintain this portfolio repository. The report records team membership but does not allocate individual tasks; this repository does not claim that I individually built every dashboard page or analysis. My current portfolio edition adds the verified Python companion, an interactive profitability explorer, a reproducible margin-driver investigation and automated evidence checks. These additions make the regional and dispatch metrics inspectable while preserving the original team credit.
 
 ## Dashboard
+
+[![Shipping and region dashboard](docs/archived-dashboard.jpg)](docs/shipping_region_analysis.html)
+
+The group HTML dashboard above was recalculated from the committed CSV: order counts and dispatch rates use distinct orders, and margins by region and ship mode are tested against the source.
 
 The Power BI report is structured around four analytical views ([full page and visual map](docs/power-bi-report.md)):
 
@@ -125,7 +129,7 @@ Use Python 3.12, install `requirements.txt`, and run the Python notebook from it
 
 For the margin-driver investigation, run `python -m scripts.build_margin_drivers` from the repository root, followed by `python ci/verify_evidence.py` and `python -m unittest discover -s tests -v`. The new script uses only the Python standard library. Its output is a committed analytical companion to the notebook and archived dashboards, not a recalculation of those archived files.
 
-The office documents, PBIX and HTML dashboard are **archived project deliverables**. Their embedded wording/metrics have not been refreshed in this review; the executed notebook, new driver script and exported evidence are the current reference for their respective analyses.
+The office documents and PBIX are **archived project deliverables**. Their embedded wording/metrics have not been refreshed; the HTML dashboard was recalculated from source on 2026-10-05 (see [VALIDATION.md](VALIDATION.md)). Otherwise the executed notebook, new driver script and exported evidence are the current reference for their respective analyses.
 
 ## Dataset
 
