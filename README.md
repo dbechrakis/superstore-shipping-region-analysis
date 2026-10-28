@@ -1,4 +1,4 @@
-# Superstore — Regional Profitability & Shipping Analytics
+# Superstore: Regional Profitability & Shipping Analytics
 
 [![Evidence checks](https://github.com/dbechrakis/superstore-shipping-region-analysis/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/superstore-shipping-region-analysis/actions/workflows/evidence.yml)
 
@@ -10,26 +10,26 @@ A business intelligence case study using **Python, Power BI, DAX, and an interac
 
 [![Superstore Profitability Explorer](docs/portfolio-overview.jpg)](https://dbechrakis.github.io/superstore-shipping-region-analysis/)
 
-Explore year, region and category filters, margin comparisons and a downloadable regional table. The demo uses aggregates from the committed sample CSV; it contains no customer identifiers.
+Explore year, region and category filters, margin comparisons and a downloadable regional table. The demo uses aggregates from the committed sample CSV. It contains no customer identifiers.
 
 Run locally with `python -m http.server 8000 --directory demo`, then open `http://localhost:8000`. Source: [`demo/`](demo/).
 
 ## Executive summary
 
-**SQL customer lifecycle case:** [inspect the six executable queries](sql/README.md) for order-grain reconciliation, window functions, monthly cohorts, equal-window 90-day repeat purchase and revenue concentration. **181 of 790 eligible customers (22.91%)** made a second purchase within 90 days; three customers lacked a full observation window. [Source-backed SQL outputs](outputs/sql/) distinguish unobservable periods from zero activity. [Current vs historical evidence](docs/evidence-map.md).
+**SQL customer lifecycle case:** [inspect the six executable queries](sql/README.md) for order-grain reconciliation, window functions, monthly cohorts, equal-window 90-day repeat purchase and revenue concentration. **181 of 790 eligible customers (22.91%)** made a second purchase within 90 days. Three customers lacked a full observation window. [Source-backed SQL outputs](outputs/sql/) distinguish unobservable periods from zero activity. [Current vs historical evidence](docs/evidence-map.md).
 
 The analysis examines sales, profit margin, dispatch performance, and product-level drivers across four US regions.
 
 | Decision in 60 seconds | Answer |
 |---|---|
 | **Question** | Where should a regional profitability investigation start? |
-| **Evidence** | Central's margin is **7.92%** versus West's **14.94%**. The exact product decomposition assigns **−7.747 percentage points** to lower margins within the same subcategories; mix partly offsets the gap. |
-| **Next step** | Audit recorded product economics and discount practices in Central, starting with Binders, Furnishings, Appliances and Tables; test a proposed intervention before scaling it. |
+| **Evidence** | Central's margin is **7.92%** versus West's **14.94%**. The exact product decomposition assigns **−7.747 percentage points** to lower margins within the same subcategories. Mix partly offsets the gap. |
+| **Next step** | Audit recorded product economics and discount practices in Central, starting with Binders, Furnishings, Appliances and Tables. Test a proposed intervention before scaling it. |
 | **Boundary** | Discounting is associated with the gap, but these observational data do not identify its causal effect or isolate logistics costs. |
 
-An exact, sales-weighted product decomposition shows that category and within-category product mix slightly *offset* Central's deficit; the gap is concentrated in lower margins within the same subcategories. Average order-to-ship time is broadly similar across regions. These data do not measure delivery time or isolate logistics costs.
+An exact, sales-weighted product decomposition shows that category and within-category product mix slightly *offset* Central's deficit. The gap is concentrated in lower margins within the same subcategories. Average order-to-ship time is broadly similar across regions. These data do not measure delivery time or isolate logistics costs.
 
-### What accounts for the Central–West margin gap?
+### What accounts for the Central-West margin gap?
 
 | Component | Central − West (pp) |
 |---|---:|
@@ -38,7 +38,7 @@ An exact, sales-weighted product decomposition shows that category and within-ca
 | Within-subcategory margin | **−7.747** |
 | **Observed difference** | **−7.023** |
 
-The largest negative within-product contributions are **Binders (−2.91 pp), Furnishings (−1.83 pp), Appliances (−1.71 pp), and Tables (−1.05 pp)**. Discounted lines (at least 30%) account for **25.76% of Central's realized sales versus 2.35% of West's**, but this association does not establish that discount cuts would recover the gap. Shipping-mode sales mix explains just **−0.11 pp** in a *separate, non-additive* mode-based view; within-mode margin differs by −6.91 pp and includes commercial effects. [Read the calculation and limitations](docs/margin-driver-method.md).
+The largest negative within-product contributions are **Binders (−2.91 pp), Furnishings (−1.83 pp), Appliances (−1.71 pp), and Tables (−1.05 pp)**. Discounted lines (at least 30%) account for **25.76% of Central's realized sales versus 2.35% of West's**, but this association does not establish that discount cuts would recover the gap. Shipping-mode sales mix explains just **−0.11 pp** in a *separate, non-additive* mode-based view. Within-mode margin differs by −6.91 pp and includes commercial effects. [Read the calculation and limitations](docs/margin-driver-method.md).
 
 ### Business implications
 
@@ -84,13 +84,13 @@ The largest negative within-product contributions are **Binders (−2.91 pp), Fu
 | [`shipping_region_analysis.html`](docs/shipping_region_analysis.html) | Group HTML dashboard, figures recalculated from source and test-checked |
 | [`Superstore_Sales_Report.docx`](docs/Superstore_Sales_Report.docx) | Historical group report |
 | [`sql/`](sql/README.md) | Current SQL customer lifecycle and cohort case |
-| [`margin-driver-method.md`](docs/margin-driver-method.md) | Reconciled Central–West decomposition, interpretation and limitations |
+| [`margin-driver-method.md`](docs/margin-driver-method.md) | Reconciled Central-West decomposition, interpretation and limitations |
 
 ## Verified Python results
 
 ![Regional profit margin](outputs/regional_margin.png)
 
-Recomputed from the committed source: **9,994 order lines, 5,009 distinct orders**, $2,297,200.86 sales and $286,397.02 profit. Standard Class orders dispatched after five days: Central **30.91%**, East **30.07%**, South **29.09%**, West **30.33%**. The denominator is distinct Standard Class orders in each region; five days is an analytical threshold, not a contractual SLA.
+Recomputed from the committed source: **9,994 order lines, 5,009 distinct orders**, $2,297,200.86 sales and $286,397.02 profit. Standard Class orders dispatched after five days: Central **30.91%**, East **30.07%**, South **29.09%**, West **30.33%**. The denominator is distinct Standard Class orders in each region. Five days is an analytical threshold, not a contractual SLA.
 
 [Regional CSV](outputs/regional_metrics.csv) · [Dispatch CSV](outputs/standard_dispatch_metrics.csv) · [Source hash and totals](outputs/validation.json)
 
@@ -98,7 +98,7 @@ The new driver evidence is independently regenerated from that same source: [sum
 
 ## My contribution and team credit
 
-I contributed to the original group project with Alexandros Douvlidis and Fotios Fotakis and maintain this portfolio repository. The report records team membership but does not allocate individual tasks; this repository does not claim that I individually built every dashboard page or analysis. My current portfolio edition adds the verified Python companion, an interactive profitability explorer, a reproducible margin-driver investigation and automated evidence checks. These additions make the regional and dispatch metrics inspectable while preserving the original team credit.
+I contributed to the original group project with Alexandros Douvlidis and Fotios Fotakis and maintain this portfolio repository. The report records team membership but does not allocate individual tasks. This repository does not claim that I individually built every dashboard page or analysis. My current portfolio edition adds the verified Python companion, an interactive profitability explorer, a reproducible margin-driver investigation and automated evidence checks. These additions make the regional and dispatch metrics inspectable while preserving the original team credit.
 
 ## Dashboard
 
@@ -108,10 +108,10 @@ The group HTML dashboard above was recalculated from the committed CSV: order co
 
 The Power BI report is structured around four analytical views ([full page and visual map](docs/power-bi-report.md)):
 
-- **Executive Summary** — headline KPIs and regional performance
-- **Product Analysis** — product/category profitability and margin pressure
-- **Customer Analysis** — customer and order-level patterns
-- **Regional Performance** — shipping, margin, sales, and dispatch-time analysis
+- **Executive Summary.** Headline KPIs and regional performance
+- **Product Analysis.** Product/category profitability and margin pressure
+- **Customer Analysis.** Customer and order-level patterns
+- **Regional Performance.** Shipping, margin, sales, and dispatch-time analysis
 
 The model uses a dedicated DateTable, a measures table, calculated business flags, and DAX measures for sales, profit, margin, customers, orders, AOV, and dispatch performance.
 
@@ -121,15 +121,15 @@ The model uses a dedicated DateTable, a measures table, calculated business flag
 
 ## Context
 
-Portfolio case study based on a group Data Visualization project at **The American College of Greece**. The team context is retained for transparency; the repository is presented as a professional analytics case study rather than as a coursework archive.
+Portfolio case study based on a group Data Visualization project at **The American College of Greece**. The team context is retained for transparency. The repository is presented as a professional analytics case study rather than as a coursework archive.
 
 ## Reproduce the current metrics
 
-Use Python 3.12, install `requirements.txt`, and run the Python notebook from its `notebooks/` directory. The source CSV is included; derived CSVs and charts are written to `outputs/`.
+Use Python 3.12, install `requirements.txt`, and run the Python notebook from its `notebooks/` directory. The source CSV is included. Derived CSVs and charts are written to `outputs/`.
 
 For the margin-driver investigation, run `python -m scripts.build_margin_drivers` from the repository root, followed by `python ci/verify_evidence.py` and `python -m unittest discover -s tests -v`. The new script uses only the Python standard library. Its output is a committed analytical companion to the notebook and archived dashboards, not a recalculation of those archived files.
 
-The office documents and PBIX are **archived project deliverables**. Their embedded wording/metrics have not been refreshed; the HTML dashboard was recalculated from source on 2026-10-05 (see [VALIDATION.md](VALIDATION.md)). Otherwise the executed notebook, new driver script and exported evidence are the current reference for their respective analyses.
+The office documents and PBIX are **archived project deliverables**. Their embedded wording/metrics have not been refreshed. The HTML dashboard was recalculated from source on 2026-10-05 (see [VALIDATION.md](VALIDATION.md)). Otherwise the executed notebook, new driver script and exported evidence are the current reference for their respective analyses.
 
 ## Dataset
 
