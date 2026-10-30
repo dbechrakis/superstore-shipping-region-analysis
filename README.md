@@ -40,6 +40,21 @@ An exact, sales-weighted product decomposition shows that category and within-ca
 
 The largest negative within-product contributions are **Binders (−2.91 pp), Furnishings (−1.83 pp), Appliances (−1.71 pp), and Tables (−1.05 pp)**. Discounted lines (at least 30%) account for **25.76% of Central's realized sales versus 2.35% of West's**, but this association does not establish that discount cuts would recover the gap. Shipping-mode sales mix explains just **−0.11 pp** in a *separate, non-additive* mode-based view. Within-mode margin differs by −6.91 pp and includes commercial effects. [Read the calculation and limitations](docs/margin-driver-method.md).
 
+### Where the gap sits across discount levels
+
+| Discount band | Central sales share | Central margin | West sales share | West margin |
+|---|---:|---:|---:|---:|
+| None | 48.5% | 31.3% | 39.6% | 26.7% |
+| Under 30% | 25.7% | 12.4% | 58.1% | 11.4% |
+| 30% to 49% | 19.8% | −11.7% | 0% | no sales |
+| 50% or more | 6.0% | −135.3% | 2.4% | −93.9% |
+
+Central earns a *higher* margin than West on undiscounted sales. West has no sales at all in the 30% to 49% band, so there is no like-for-like West comparison for that part of Central's business. Measured as each band's contribution to the region's overall margin, Central is 4.6 pp ahead on undiscounted sales, 3.4 pp behind under 30%, 2.3 pp behind at 30% to 49% and 5.9 pp behind at 50% or more, which adds up to the −7.02 pp gap.
+
+The gap also rests on very few lines. Removing the 10 lowest-profit lines from *each* region (0.4% of Central's lines) narrows it from −7.02 to −4.37 pp, and removing 100 per region (4.3%) leaves −0.40 pp. Nine Central lines lose $1,000 or more, against one in West.
+
+This is accounting, not a causal estimate. A discount may reflect product, customer or negotiation patterns that also affect margin, and the missing West band means the data cannot tell what a different discount would have done. [Method and checks](docs/margin-driver-method.md).
+
 ### Business implications
 
 - Investigate recorded product economics and discount practices in Central, starting with Binders, Furnishings, Appliances and Tables.
