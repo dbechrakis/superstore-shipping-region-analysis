@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from analysis.discount_bands import band_table, trimming_table
 from analysis.margin_drivers import analyze
 
 
@@ -27,11 +28,14 @@ def main():
     parser.add_argument("--reference", default="West")
     args = parser.parse_args()
     with args.source.open(newline="", encoding="latin1") as handle:
-        result = analyze(list(csv.DictReader(handle)), args.focus, args.reference)
+        rows = list(csv.DictReader(handle))
+    result = analyze(rows, args.focus, args.reference)
     args.output.mkdir(parents=True, exist_ok=True)
     write_table(args.output / "product_margin_contributions.csv", result.pop("product_rows"))
     write_table(args.output / "shipping_mode_contributions.csv", result.pop("shipping_rows"))
     write_table(args.output / "discount_diagnostic.csv", result.pop("discount_rows"))
+    write_table(args.output / "discount_bands.csv", band_table(rows, args.focus, args.reference)[0])
+    write_table(args.output / "margin_trimming.csv", trimming_table(rows, args.focus, args.reference))
     result["source_sha256"] = hashlib.sha256(args.source.read_bytes()).hexdigest()
     result["method"] = "Sales-weighted Shapley accounting decomposition; percentage points, reference to focus"
     result["interpretation"] = "Product and shipping are alternative, non-additive views; discount is descriptive, not causal"

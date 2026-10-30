@@ -3,6 +3,7 @@ from pathlib import Path
 import ast, csv, hashlib, json, math, sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
+from analysis.discount_bands import band_table, trimming_table
 from analysis.margin_drivers import analyze
 for p in ROOT.rglob('*.py'):
     if not any(x in p.parts for x in ['.git','.venv','node_modules']): ast.parse(p.read_text())
@@ -56,6 +57,24 @@ for record in discount:
     for field in ('sales','profit','margin_pct','sales_weighted_discount_pct','sales_share_discount_ge_30_pct'):
         close(record[field],expected[field])
 assert not reference
+
+bands,band_gap=band_table(rows,driver['focus'],driver['reference'])
+close(band_gap,driver['gap_pp'])
+committed=table('outputs/discount_bands.csv')
+assert len(committed)==len(bands)
+for record,expected in zip(committed,bands):
+    assert (record['region'],record['discount_band'])==(expected['region'],expected['discount_band'])
+    assert int(record['lines'])==expected['lines']
+    for field in ('sales','profit','sales_share_pct','contribution_to_margin_pp'):
+        close(record[field],expected[field])
+    assert (record['margin_pct']=='')==(expected['margin_pct']=='')
+    if expected['margin_pct']!='': close(record['margin_pct'],expected['margin_pct'])
+trimmed=trimming_table(rows,driver['focus'],driver['reference'])
+committed=table('outputs/margin_trimming.csv')
+assert len(committed)==len(trimmed)
+for record,expected in zip(committed,trimmed):
+    assert int(record['lines_removed_per_region'])==expected['lines_removed_per_region']
+    close(record['gap_pp'],expected['gap_pp'])
 
 print('Committed evidence and syntax checks passed; see VALIDATION.md for rerun scope.')
 

@@ -36,6 +36,14 @@ Shipping mode is a **separate alternative partition of the same 7.02 pp gap**, n
 - **Keep shipping separate:** product and shipping partitions each explain the same regional gap. Adding them would double-count it, and within-mode margin is not a measure of shipping cost.
 - **Diagnose discounts without a claimed uplift:** the recorded discount is associated with poor Central margins, but changing discounts could change demand and order mix. The descriptive allocation cannot predict that response.
 
+## Discount bands and concentration
+
+`analysis/discount_bands.py` splits each region's lines into four recorded discount bands (none, under 30%, 30% to 49%, 50% or more). Each band's profit divided by the region's total sales is its contribution to the region's margin in percentage points, so the four bands add up to the margin and their differences add up to the gap. This is exact accounting with no counterfactual. West has no sales in the 30% to 49% band, so that band has no margin there and nothing to compare against. The empty cell is left blank, not imputed.
+
+`margin_trimming.csv` removes the k lowest-profit lines from each region and recomputes the gap. It shows how few lines carry it. It is not a proposal to drop lines.
+
+`python -m scripts.build_margin_drivers` writes `outputs/discount_bands.csv` and `outputs/margin_trimming.csv`, and `ci/verify_evidence.py` recomputes both from the source rows.
+
 ## Decision use and limits
 
 

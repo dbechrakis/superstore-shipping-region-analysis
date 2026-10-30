@@ -20,3 +20,9 @@ Ten new SQL tests cover multi-line order grain, exact amounts, zero activity, ce
 ## Archived HTML dashboard recalculation — 2026-10-05
 
 The profit-margin heatmap in `docs/shipping_region_analysis.html` did not match the source: it showed Central negative in every ship mode (−5% to −12%), while the CSV gives +6.3% to +8.8%, and the only negative cell, South / Same Day (−8.4%), was shown as positive. The header and region cards counted order lines as orders, and the dispatch panel counted lines rather than Standard Class orders. All of these now use the committed CSV: 5,009 orders (9,994 lines), distinct-order dispatch counts and rates matching the README (Central 30.91%, West 30.33%, East 30.07%, South 29.09%), order-level average days to ship and corrected margins. `tests/test_archived_dashboard.py` recomputes the heatmap, dispatch figures and header counts from the CSV; it fails on the previous version of the file.
+
+## Discount bands and concentration, 2026-10-30
+
+Added `analysis/discount_bands.py`, `outputs/discount_bands.csv`, `outputs/margin_trimming.csv` and 8 tests. Before adding them I reran `python -m scripts.build_margin_drivers` and the four existing output files were reproduced byte-identical, and I recomputed the README's shipping-time and discount figures from the CSV (average order-to-ship days 4.06 Central and 3.93 West, discounted sales share 25.76% and 2.35%). The new tables add that Central's margin on undiscounted sales (31.3%) is higher than West's (26.7%), that West has no sales in the 30% to 49% discount band, and that removing the 10 lowest-profit lines from each region narrows the gap from −7.02 to −4.37 pp.
+
+A test written for the new code found that `band_of` accepted a discount above 1 and put it in the top band. It now raises. The CI verifier recomputes both new tables from source. 27 tests pass.
