@@ -4,6 +4,8 @@
 
 A business intelligence case study using **Python, Power BI, DAX, and an interactive HTML dashboard** to identify regional profitability gaps and understand whether shipping or commercial factors explain performance differences.
 
+**Result:** On 16,835 later bookings, the review threshold flags 45% of bookings and catches 70% of cancellations at 45% precision. Calibrated probabilities have an expected calibration error of 0.013.
+
 ## Interactive portfolio demo
 
 **[Open the live Profitability Explorer →](https://dbechrakis.github.io/superstore-shipping-region-analysis/)**
@@ -153,7 +155,7 @@ Sample Superstore transactional data, sourced from the dataset used in the origi
 ## Author
 
 **Dimitris Bechrakis**  
-Business & Data Analyst | M.Sc. Data Science
+Business Analyst · Commercial Analytics & Experimentation · Applied Data Science
 
 ## Licensing
 
