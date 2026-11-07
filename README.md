@@ -4,7 +4,7 @@
 
 A business intelligence case study using **Python, Power BI, DAX, and an interactive HTML dashboard** to identify regional profitability gaps and understand whether shipping or commercial factors explain performance differences.
 
-**Result:** On 16,835 later bookings, the review threshold flags 45% of bookings and catches 70% of cancellations at 45% precision. Calibrated probabilities have an expected calibration error of 0.013.
+**Result:** Central trails West by 7.02 pp of margin. Of that, −7.75 pp sits within the same products, where discounted lines (30% or more) make up 25.76% of Central's sales against 2.35% of West's. Product mix partly offsets the gap.
 
 ## Interactive portfolio demo
 
