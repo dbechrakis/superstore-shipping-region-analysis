@@ -6,7 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from analysis.discount_bands import band_table, trimming_table
+from analysis.discount_bands import band_table, discount_determinism, trimming_table
 from analysis.margin_drivers import analyze
 
 
@@ -36,6 +36,7 @@ def main():
     write_table(args.output / "discount_diagnostic.csv", result.pop("discount_rows"))
     write_table(args.output / "discount_bands.csv", band_table(rows, args.focus, args.reference)[0])
     write_table(args.output / "margin_trimming.csv", trimming_table(rows, args.focus, args.reference))
+    result["discount_determinism"] = discount_determinism(rows)
     result["source_sha256"] = hashlib.sha256(args.source.read_bytes()).hexdigest()
     result["method"] = "Sales-weighted Shapley accounting decomposition; percentage points, reference to focus"
     result["interpretation"] = "Product and shipping are alternative, non-additive views; discount is descriptive, not causal"

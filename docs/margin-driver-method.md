@@ -46,6 +46,8 @@ Shipping mode is a **separate alternative partition of the same 7.02 pp gap**, n
 
 ## Decision use and limits
 
+**How the data was made limits what any finding can mean.** Sample Superstore is Tableau's demonstration dataset. Within a sub-category the recorded discount explains 95.6% of the variance in line margin (sub-category alone 20.9%, discount alone 86.9%, 57 cells, `discount_determinism` in `outputs/margin_drivers.json`). The within-product component of the gap is therefore close to a restatement of Central's heavier discounting, and no amount of decomposition can separate a pricing practice from the rule that generated the profit column. The method is the transferable part.
+
 
 Prioritize a review of pricing, discounts, product economics and recorded cost for Binders, Furnishings, Appliances and Tables. Check transaction-level composition and cost accounting before proposing a change. Then test a specific intervention prospectively: the historical gap and Shapley allocation are descriptive accounting identities, not forecasts of profit uplift or causal attributions. No comparison here controls for customers, geography within regions, seasonality, or all cost components.
 
