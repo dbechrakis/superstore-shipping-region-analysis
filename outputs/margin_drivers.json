@@ -17,6 +17,13 @@
   },
   "reconciliation_residual_pp": -2.5757174171303632e-14,
   "shipping_reconciliation_residual_pp": 3.552713678800501e-15,
+  "discount_determinism": {
+    "lines": 9994,
+    "r2_subcategory": 0.2085375160276116,
+    "r2_discount": 0.8691314618515691,
+    "r2_subcategory_x_discount": 0.955980371884039,
+    "cells_subcategory_x_discount": 57
+  },
   "source_sha256": "58fb59c63089e564d835e4aabe19d371757de1137a5bf1888243ae386c4b7a97",
   "method": "Sales-weighted Shapley accounting decomposition; percentage points, reference to focus",
   "interpretation": "Product and shipping are alternative, non-additive views; discount is descriptive, not causal"

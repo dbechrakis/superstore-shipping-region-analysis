@@ -3,7 +3,7 @@ from pathlib import Path
 import ast, csv, hashlib, json, math, sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from analysis.discount_bands import band_table, trimming_table
+from analysis.discount_bands import band_table, discount_determinism, trimming_table
 from analysis.margin_drivers import analyze
 for p in ROOT.rglob('*.py'):
     if not any(x in p.parts for x in ['.git','.venv','node_modules']): ast.parse(p.read_text())
@@ -75,6 +75,11 @@ assert len(committed)==len(trimmed)
 for record,expected in zip(committed,trimmed):
     assert int(record['lines_removed_per_region'])==expected['lines_removed_per_region']
     close(record['gap_pp'],expected['gap_pp'])
+
+determinism=discount_determinism(rows)
+assert determinism['lines']==driver['discount_determinism']['lines']
+for field in ('r2_subcategory','r2_discount','r2_subcategory_x_discount'):
+    close(determinism[field],driver['discount_determinism'][field])
 
 print('Committed evidence and syntax checks passed; see VALIDATION.md for rerun scope.')
 

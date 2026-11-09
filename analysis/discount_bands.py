@@ -89,3 +89,36 @@ def trimming_table(rows, focus="Central", reference="West", counts=TRIM_COUNTS):
             "gap_pp": margins[focus] - margins[reference],
         })
     return result
+
+
+def _r_squared(values, keys):
+    mean = sum(values) / len(values)
+    total = sum((v - mean) ** 2 for v in values)
+    groups = defaultdict(list)
+    for v, k in zip(values, keys):
+        groups[k].append(v)
+    cell_mean = {k: sum(g) / len(g) for k, g in groups.items()}
+    within = sum((v - cell_mean[k]) ** 2 for v, k in zip(values, keys))
+    return 1 - within / total
+
+
+def discount_determinism(rows):
+    """How much of each line's margin (profit over sales) the recorded discount fixes.
+
+    Each line is predicted by the mean margin of its cell, and the share of variance explained is
+    reported for sub-category alone, discount alone and the two together. In real transactions price,
+    cost and customer would leave much of the margin unexplained. A share near one means the extract's
+    profit is close to a fixed function of discount within a product, which is how Sample Superstore,
+    a demonstration dataset, behaves.
+    """
+    lines = [r for r in rows if float(r["Sales"]) > 0]
+    margin = [float(r["Profit"]) / float(r["Sales"]) for r in lines]
+    sub = [r["Sub-Category"] for r in lines]
+    disc = [round(float(r["Discount"]), 4) for r in lines]
+    return {
+        "lines": len(lines),
+        "r2_subcategory": _r_squared(margin, sub),
+        "r2_discount": _r_squared(margin, disc),
+        "r2_subcategory_x_discount": _r_squared(margin, list(zip(sub, disc))),
+        "cells_subcategory_x_discount": len(set(zip(sub, disc))),
+    }

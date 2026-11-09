@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 import unittest
 
-from analysis.discount_bands import band_of, band_table, trimming_table
+from analysis.discount_bands import band_of, band_table, discount_determinism, trimming_table
 
 SOURCE = Path(__file__).resolve().parents[1] / "data" / "Sample - Superstore.csv"
 
@@ -77,3 +77,24 @@ class DatasetTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def margin_line(sub, sales, profit, discount):
+    return {"Sub-Category": sub, "Sales": str(sales), "Profit": str(profit), "Discount": str(discount)}
+
+
+class DiscountDeterminismTests(unittest.TestCase):
+    def test_a_margin_fixed_by_discount_is_fully_explained_and_noise_is_not(self):
+        fixed = [margin_line("Tables", 100, 100 * (0.3 - d), d) for d in (0, 0, 0.2, 0.2, 0.5, 0.5)]
+        result = discount_determinism(fixed)
+        self.assertAlmostEqual(result["r2_discount"], 1.0)
+        self.assertAlmostEqual(result["r2_subcategory"], 0.0)
+        noisy = [margin_line("Tables", 100, p, 0) for p in (10, 30, 20, 40)]
+        noisy += [margin_line("Tables", 100, p, 0.2) for p in (15, 35, 25, 25)]
+        self.assertAlmostEqual(discount_determinism(noisy)["r2_discount"], 0.0)
+
+    def test_the_committed_extract_is_almost_a_function_of_discount_within_product(self):
+        with SOURCE.open(newline="", encoding="latin1") as handle:
+            result = discount_determinism(list(csv.DictReader(handle)))
+        self.assertGreater(result["r2_subcategory_x_discount"], 0.95)
+        self.assertGreater(result["r2_subcategory_x_discount"], result["r2_subcategory"] + 0.3)

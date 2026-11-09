@@ -4,6 +4,8 @@
 
 A business intelligence case study using **Python, Power BI, DAX, and an interactive HTML dashboard** to identify regional profitability gaps and understand whether shipping or commercial factors explain performance differences.
 
+> **The data is a demonstration dataset, not a real company.** Sample Superstore is the practice dataset distributed with Tableau. Its profit is close to a fixed function of the recorded discount: within a sub-category, the discount explains **95.6%** of the variance in line margin (discount alone 86.9%), where real transactions would leave price, cost and customer variation unexplained. So the finding that Central's gap sits in its discounted lines partly restates how the data was generated. The methods (exact decomposition, reconciliation, cohort SQL) transfer to real data. The business conclusions are an exercise.
+
 **Result:** Central trails West by 7.02 pp of margin. Of that, −7.75 pp sits within the same products, where discounted lines (30% or more) make up 25.76% of Central's sales against 2.35% of West's. Product mix partly offsets the gap.
 
 ## Interactive portfolio demo
@@ -27,7 +29,7 @@ The analysis examines sales, profit margin, dispatch performance, and product-le
 | **Question** | Where should a regional profitability investigation start? |
 | **Evidence** | Central's margin is **7.92%** versus West's **14.94%**. The exact product decomposition assigns **−7.747 percentage points** to lower margins within the same subcategories. Mix partly offsets the gap. |
 | **Next step** | Audit recorded product economics and discount practices in Central, starting with Binders, Furnishings, Appliances and Tables. Test a proposed intervention before scaling it. |
-| **Boundary** | Discounting is associated with the gap, but these observational data do not identify its causal effect or isolate logistics costs. |
+| **Boundary** | Discounting is associated with the gap, but these observational data do not identify its causal effect or isolate logistics costs. The data is Tableau's demonstration dataset, where profit is nearly a function of discount, so the recommendation shows the method, not advice for a real retailer. |
 
 An exact, sales-weighted product decomposition shows that category and within-category product mix slightly *offset* Central's deficit. The gap is concentrated in lower margins within the same subcategories. Average order-to-ship time is broadly similar across regions. These data do not measure delivery time or isolate logistics costs.
 
@@ -150,7 +152,7 @@ The office documents and PBIX are **archived project deliverables**. Their embed
 
 ## Dataset
 
-Sample Superstore transactional data, sourced from the dataset used in the original project.
+Sample Superstore, the demonstration dataset distributed with Tableau (2014 to 2017 order lines for a fictional US office-supplies retailer), as used in the original project. It is synthetic: profit follows the recorded discount so closely within each sub-category that the two together explain 95.6% of the variance in line margin (`discount_determinism` in [`margin_drivers.json`](outputs/margin_drivers.json), recomputed by CI). Treat every business finding here as a worked example of the method.
 
 ## Author
 
